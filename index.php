@@ -1,6 +1,6 @@
 <?php
 
-    include_once './connection/local_db.php';
+    include './connection/local_db.php';
 
     echo 'Hello';
 ?>

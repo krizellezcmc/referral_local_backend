@@ -16,17 +16,31 @@
     foreach($sheetsData as $key1 => $gs_val) {
         // Store names in an array
         $fullname = $gs_val->Lastname.", ".$gs_val->Firstname." ".$gs_val->Middlename." ";
-        $referredDate = $gs_val->Timestamp;
-        array_push($newData, array('patientname' => $fullname));
+        $date = strtotime($gs_val->Timestamp);
+        $referreddate = date("Y/m/d", $date);
+        array_push($newData, array('patientname' => $fullname, 'referreddate' => $referreddate));
     }
 
     $result = [];
 
     // Compare $bb_array(bizbox) patientname and $newData names
     foreach($bb_array as $key => $value){
-        if(is_in_array($newData, "patientname", $value['patientname']) == $value['patientname']) {
-            $result[] = $value;
+        if(is_in_array($newData, "patientname", strtoupper($value['patientname'])) == strtoupper($value['patientname'])) {
+
+            if ($value['referreddate'] != null) {
+                $refDate = $value['referreddate']->format("Y/m/d");
+            } else {
+                $refDate  = '00/00/0000 00:00:00';
+            }
+
+             if(is_in_array($newData, "referreddate", $refDate) == $refDate){
+                $result[] = $value;
+            }    
         }
     }
 
+    echo json_encode($result)
+
+
 ?>
+

@@ -6,6 +6,7 @@ include '../connection/local_db.php';
 $regNo =  $_GET['id'];
 
 $query = "SELECT 
+            prof.PK_psPatRegisters as patRegister,
             prof.PatientFullName as patientName, 
             prof.age2 as age,
             prof.FK_psRooms as ward,  
@@ -16,7 +17,7 @@ $query = "SELECT
             reg.dischdiagnosis,
             reg.finaldiagnosis,
             reg.dischdate
-            FROM 
+            FROM
             vwReportPatientProfile prof
             LEFT JOIN psPatRegisters reg ON
             prof.PK_psPatRegisters = reg.PK_psPatRegisters

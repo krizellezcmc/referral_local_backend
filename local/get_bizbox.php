@@ -24,8 +24,5 @@
     while($row = sqlsrv_fetch_array($getData, SQLSRV_FETCH_ASSOC)){
         $bb_array[] = $row;
     }   
-
-
-   
   
 ?>
