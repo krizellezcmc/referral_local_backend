@@ -1,9 +1,9 @@
 
 <?php
 
-
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Credentials: true");
 
 $host = "ZCMCHISSERVER\ZCMCSQL"; 
 
@@ -11,7 +11,7 @@ $options = [
   "Database" => "TrainingDB_HS8",
   "UID" => "referral",
   "PWD" => "ZCMCref_2022",
-  "CharacterSet" => "UTF-8"
+  "CharacterSet" => "UTF-8"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 ];
 
 $bb_db =  sqlsrv_connect($host, $options);
